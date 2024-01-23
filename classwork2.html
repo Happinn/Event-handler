@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classwork2</title>
+</head>
+<body>
+    <form> 
+        <ul>
+         <li><input type="number" name="number" id="num" placeholder="enter a number" min="1" max="3999">
+             <button>check</button>
+         </li>
+        </ul>
+        <p></p>
+    </form>
+
+<script>
+    const fig = document.querySelector('input')
+    const pee = document.querySelector('p')
+    const btn = document.querySelector('button')
+
+    function roman(){
+        e.preventDefault()
+        const num = fig.value
+        const units = ['','i','ii','iii','iv','v','vi','vii','viii','ix']
+        const tens = ['','x','xx','xxx','xl','l','lx','lxx','lxxx','xc']
+        const huns = ['','c','cc','ccc','cd','d','dc','dcc','dccc','cm']
+        const thos = ['','m','mm','mmm','m⊽','⊽','⊽m']
+        
+
+        let result
+
+        num.length == 1 ? result = units[num] : ''
+        num.length == 2 ? result = tens[num[0]]+units[num[1]]: ''
+        num.length == 3 ? result = huns[num[0]]+tens[num[1]]+units[num[2]]: ''
+        num.length == 4 ? result = thos[num[0]]+huns[num[1]]+tens[num[2]]+units[num[3]]: ''
+        result = `${thos[num[0]]}${huns[num[1]]}${tens[num[2]]}${units[num[3]]}:` 
+
+    
+
+        pee.textContent = result.toUpperCase()
+
+    }
+
+    btn.addEventListener('click', roman)
+
+
+//     function convert(num){
+//         if (num < 1){ return "";}
+//         if (num >= 3999){return "MMMCMXCIX" + convert(num - 3999);}
+//         if (num >= 3000){return "MMM" + convert(num - 3000);}
+//         if (num >= 1000){return "M" + convert(num - 1000);}
+//         if (num >= 500){return "D" + convert(num - 500);}
+//         if (num >= 100){return "C" + convert(num - 100);}
+//         if (num >= 50){return "L" + convert(num - 50);}
+//         if (num >= 10){return "X" + convert(num - 10);}
+//         if (num >= 9){return "iX" + convert(num - 9);}
+//         if (num >= 5){return "v" + convert(num - 5);}
+//         if (num >= 4){return "iv" + convert(num - 4);}
+//         if (num >= 3){return "iii" + convert(num - 3);}
+//         if (num >= 1){return "i" + convert(num - 1);} -->
+
+//    }
+
+    // console.log(convert(1003))
+    // btn.addEventListener('click', convert)
+
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classwork1</title>
+
+</head>
+<body>
+    <form>
+<ul>
+    <li>
+<label for="weight">weight(kg)</label>
+<input type="text" id="weight" name="weight" placeholder="enter yuor weight" min="18" max="30">
+    </li>
+
+    <li>
+        <label for="height">height(m)</label>
+        <input type="text" id="height" name="height" placeholder="enter your height in cm" min="80" max="200">
+    </li>
+    
+    </ul><button>check status</button>
+
+    </form>
+    <section>
+
+    </section>
+
+</body>
+<script>
+    const input = document.getElementsByTagName('input')
+    const btn = document.querySelector('button')
+    const sect = document.querySelector('section')
+
+    const para1 = document.createElement('p')
+    const para2 = document.createElement('p')
+    const para3 = document.createElement('p')
+    
+
+
+
+    function calc(e){
+        e.preventDefault() 
+        const weight = input[0].value*1
+        const height = input[1].value-0
+
+        const avg = (weight/height**2).toFixed(2)
+
+        para1.innerHTML = `BMI:${avg}kgm<sup>-2</sup>`
+
+        para2.innerHTML= `Satus: ${avg <= 30 ?  "obesed" : avg >= 25 ? "overweight" : avg >= 18.5 ? "Healthy weight" : "underweight"}`
+
+        para3.textContent= `Status: ${avg <= 30 ? "Advised to go for surgery" : avg >= 25 ? "Try to go on a diet to reduce your weight": avg >= 18.5 ? "you are healthy, keep it up" : "You need to eat more"}`
+
+        sect.style.background = `${avg <= 30 ?  "red" : avg >= 25 ? "orange" : avg >= 18.5 ? "green" : "yellow"}`
+
+        
+        
+        sect.append(para1,para2,para3)
+
+    }
+
+    btn.addEventListener('click', calc)
+
+</script>
+</html>

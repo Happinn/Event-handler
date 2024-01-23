@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <form>
+        <ul>
+            <li>
+                <label for="mth">Math</label>
+                <input type="number" id="mth" name="mth" placeholder="score in numbers">
+                
+            </li>
+            
+            <li>
+                <label for="eng">English</label>
+                <input type="number" id="eng" name="eng" placeholder="score in text">
+            </li>
+            <li>
+                <button>check avg</button>
+            </li>
+        </ul>
+
+    </form>
+
+<section>
+
+</section>
+
+</body>
+<script>
+    const input = document.getElementsByTagName('input')
+    const btn = document.querySelector('button')
+    const sect = document.querySelector('section')
+    const para1 = document.createElement('p')
+    const para2 = document.createElement('p')
+
+    function calc(e){
+        e.preventDefault()  //this does not allow the 'form' to refresh after inputing your value and dishover on it.
+        const eng = input[0].value*1
+        const math = input[1].value-0
+
+        const avg = (eng+math)/2
+
+        para1.textContent = 'Average score is: ' + avg
+        // para2.textContent = `Grade: ${avg >= 50 ? "Pass"  : "Fail"}`
+        para2.textContent = `Grade: ${avg >= 70 ?  "A" : avg >= 60 ? "B" : avg >= 50 ? "C" : avg >= 40 ? "FF" : "Fail"}`
+        sect.style.background = `${avg >= 70? 'green' : avg >= 50 ? "orange" : "red"}`
+
+
+        sect.append(para1,para2)
+
+        // alert(avg)
+
+    }
+
+    btn.addEventListener('click', calc)
+    btn.addEventListener('submit', calc)
+</script>
+
+
+
+</html>
